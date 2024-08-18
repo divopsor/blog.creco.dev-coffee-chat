@@ -1,0 +1,55 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          submodules: true
+
+      - name: Cache Packages
+        id: cache-packages
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-packages
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: yarn install && build
+        run: |
+          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
+          yarn build
+          yarn next export
+
+      - name: deploy to public storage
+        run: |
+          rm -rf public-storage
+          git clone https://$CRECO_STORAGE@github.com/creco-storage/public-storage.git
+          
+          cd public-storage
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          rm -rf ./blog.creco.dev/coffee-chat
+          mv ../out ./blog.creco.dev/coffee-chat
+          git add -A
+          git -c core.hookspath=/dev/null commit -m "$(git log -1 --pretty=%B)"
+          git push origin HEAD
+        env:
+          CRECO_STORAGE: ${{ secrets.CRECO_STORAGE }}

@@ -1,0 +1,30 @@
+{
+  "name": "@divopsor/blog.creco.dev-coffee-chat",
+  "private": true,
+  "scripts": {
+    "dev": "LOCAL=true next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "cd ../../ && yarn config-cli blog.creco.dev/coffee-chat"
+  },
+  "dependencies": {
+    "@babel/core": "^7.19.1",
+    "next": "^13",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7",
+    "@types/eslint": "^8",
+    "@types/node": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "8.23.1",
+    "eslint-config-next": "^13.4.13",
+    "eslint-plugin-import": "^2.26.0",
+    "typescript": "^5"
+  }
+}
