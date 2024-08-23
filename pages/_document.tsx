@@ -14,6 +14,7 @@ export default function Document() {
           backgroundImage:
             "url(https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png)",
           backgroundSize: "100% 100vh",
+          backgroundColor: "rgb(19, 24, 32)"
         }}
       >
         <Main />
