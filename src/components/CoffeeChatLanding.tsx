@@ -150,6 +150,8 @@ export const CoffeeChatLanding: React.FC = () => {
           />
         </a>
       </footer>
+
+      <Spacing size={50} />
     </div>
   );
 };
