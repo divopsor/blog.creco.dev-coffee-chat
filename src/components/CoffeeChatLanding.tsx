@@ -9,7 +9,7 @@ export const CoffeeChatLanding: React.FC = () => {
         fontFamily: "Noto Sans",
       }}
     >
-      <Spacing size={30} />
+      <Spacing size={20} />
 
       <h1
         style={{
@@ -22,7 +22,7 @@ export const CoffeeChatLanding: React.FC = () => {
         ☕ Coffee Chat
       </h1>
 
-      <Spacing size={30} />
+      <Spacing size={20} />
 
       <div
         style={{
@@ -102,11 +102,13 @@ export const CoffeeChatLanding: React.FC = () => {
         style={{
           backgroundColor: "#333",
           color: "#fff",
+          width: "224px",
           padding: "14px 28px",
-          borderRadius: "16px",
+          borderRadius: "45px",
           border: "none",
           cursor: "pointer",
           fontSize: "24px",
+          height: "60px",
         }}
       >
         커피챗 신청하기
