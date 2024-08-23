@@ -110,6 +110,12 @@ export const CoffeeChatLanding: React.FC = () => {
           fontSize: "24px",
           height: "60px",
         }}
+        onClick={() => {
+          window.open(
+            "https://forms.gle/zNty1mVJUAxrq81UA",
+            "_blank"
+          );
+        }}
       >
         커피챗 신청하기
       </button>
