@@ -13,7 +13,7 @@ export default function Document() {
         style={{
           backgroundImage:
             "url(https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png)",
-          backgroundSize: "100% 100vh",
+          backgroundSize: "100% 110vh",
           backgroundColor: "rgb(19, 24, 32)"
         }}
       >
