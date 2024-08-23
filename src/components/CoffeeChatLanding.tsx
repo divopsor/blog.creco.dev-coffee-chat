@@ -49,7 +49,7 @@ export const CoffeeChatLanding: React.FC = () => {
               objectFit: "contain",
               boxShadow:
                 "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.19) 0px 2px 5px 0px",
-                aspectRatio: '13 / 15',
+              aspectRatio: "13 / 15",
             }}
           />
           <div style={{ textAlign: "center" }}>
@@ -83,13 +83,14 @@ export const CoffeeChatLanding: React.FC = () => {
               >
                 @TossTeam{" "}
               </span>
-              <span style={{
-
-
-                color: '#eee',
-                fontWeight: 'bold'
-
-              }}>정석호</span>
+              <span
+                style={{
+                  color: "#eee",
+                  fontWeight: "bold",
+                }}
+              >
+                정석호
+              </span>
             </p>
           </div>
         </section>
@@ -108,27 +109,27 @@ export const CoffeeChatLanding: React.FC = () => {
           fontSize: "24px",
         }}
       >
-        커피챗 신청하러 가기
+        커피챗 신청하기
       </button>
 
       <Spacing size={20} />
 
       <footer
         style={{
-          padding: '12px',
-          display: 'flex',
-          justifyContent: 'center',
-          width: '200px',
-          gap: '30px',
-          margin: '0 auto',
-          borderRadius: '45px',
-          backdropFilter: 'blur(30px)',
-          border: '1px solid rgba(0, 0, 0, 0.1)',
+          padding: "12px",
+          display: "flex",
+          justifyContent: "center",
+          width: "200px",
+          gap: "30px",
+          margin: "0 auto",
+          borderRadius: "45px",
+          backdropFilter: "blur(30px)",
+          border: "1px solid rgba(0, 0, 0, 0.1)",
         }}
       >
         <a
           href="https://github.com/CreatiCoding"
-          style = {{ display: 'flex' }}
+          style={{ display: "flex" }}
           target="_blank"
         >
           <img
@@ -138,7 +139,7 @@ export const CoffeeChatLanding: React.FC = () => {
         </a>
         <a
           href="https://www.linkedin.com/in/seokho-jeong-8815b7157/"
-          style = {{ display: 'flex' }}
+          style={{ display: "flex" }}
           target="_blank"
         >
           <img
