@@ -26,6 +26,12 @@ module.exports = (phase, { defaultConfig }) => {
           destination: '/coffee-chat',
           permanent: false,
           basePath: false,
+        },
+        {
+          source: '/favicon.ico',
+          destination: 'https://blog.creco.dev/favicon.ico',
+          permanent: false,
+          basePath: false,
         }
       ];
     }: null,
