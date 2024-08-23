@@ -122,7 +122,7 @@ export const CoffeeChatLanding: React.FC = () => {
           gap: '30px',
           margin: '0 auto',
           borderRadius: '45px',
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(30px)',
           border: '1px solid rgba(0, 0, 0, 0.1)',
         }}
       >
