@@ -72,7 +72,7 @@ export const CoffeeChatLanding: React.FC = () => {
                 whiteSpace: "pre",
               }}
             >
-              {'"7가지 플랫폼 서버로\n프론트엔드 버프 마법 걷기"'}
+              {'"7가지 플랫폼 서버로\n프론트엔드 버프 마법 걸기"'}
             </p>
             <p style={{ fontSize: "24px", color: "#555" }}>
               <span
