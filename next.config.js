@@ -38,7 +38,7 @@ module.exports = (phase, { defaultConfig }) => {
     rewrites: process.env.LOCAL === 'true' ? async () => {
       return [
         {
-          source: '/common-api/:slug*',
+          source: '/api/:slug*',
           destination: 'https://app.divops.kr/api/:slug*', // Matched parameters can be used in the destination
           basePath: false,
         },
