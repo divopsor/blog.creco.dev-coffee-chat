@@ -1,0 +1,82 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.calendar__header {
+  display: flex;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+}
+
+.calendar__header_cell {
+  flex: 1;
+  text-align: center;
+  padding: 16px 0;
+
+  border-left: 1px solid #ccc;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.calendar__header_cell:first-child {
+  border-left: none;
+}
+.calendar__header_cell:last-child {
+  border-right: none;
+}
+
+.calendar__body {
+  display: flex;
+  flex-wrap: wrap; /* 셀을 그리드로 표현하기 위해 flex-wrap 사용 */
+}
+
+.calendar__body > div {
+  flex: 0 0 calc(100% / 7); /* 각 셀의 너비를 7로 나눔 */
+  height: 400px;
+}
+.calendar__body > div > div {
+  padding: 18px;
+  height: calc(100% - 20px);
+  text-align: center;
+}
+
+.calendar__body > div:last-child {
+  border-right: none;
+}
+
+.current__another__month {
+  color: #333;
+  position: relative;
+}
+
+.current__another__month::before {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  position: absolute;
+  content: '';
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  bottom: 5px;
+  left: 5px;
+}
+
+.current__month {
+  color: #333;
+  position: relative;
+}
+
+.current__month::before {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  position: absolute;
+  content: '';
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  bottom: 5px;
+  left: 5px;
+}

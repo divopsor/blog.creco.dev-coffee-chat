@@ -1,5 +1,17 @@
-import { Spacing } from "@divops-packages/blog-creco-dev";
 import React from "react";
+import { CoffeeChatButton } from "./CoffeeChatButton";
+
+function Spacing({ size }: { size: number }) {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: `${size}px`,
+      }}
+    >
+    </div>
+  );
+}
 
 export const CoffeeChatLanding: React.FC = () => {
   return (
@@ -97,28 +109,8 @@ export const CoffeeChatLanding: React.FC = () => {
       </div>
 
       <Spacing size={40} />
-
-      <button
-        style={{
-          backgroundColor: "#333",
-          color: "#fff",
-          width: "224px",
-          padding: "14px 28px",
-          borderRadius: "45px",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "24px",
-          height: "60px",
-        }}
-        onClick={() => {
-          window.open(
-            "https://forms.gle/zNty1mVJUAxrq81UA",
-            "_blank"
-          );
-        }}
-      >
-        커피챗 신청하기
-      </button>
+      
+      <CoffeeChatButton />
 
       <Spacing size={20} />
 

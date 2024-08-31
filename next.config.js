@@ -39,7 +39,7 @@ module.exports = (phase, { defaultConfig }) => {
       return [
         {
           source: '/api/:slug*',
-          destination: 'https://app.divops.kr/github-api/api/:slug*', // Matched parameters can be used in the destination
+          destination: 'https://app.divops.kr/api/:slug*', // Matched parameters can be used in the destination
           basePath: false,
         },
       ];
