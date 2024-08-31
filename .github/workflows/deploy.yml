@@ -35,7 +35,6 @@ jobs:
         run: |
           YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
           yarn build
-          yarn next export
 
       - name: deploy to public storage
         run: |
