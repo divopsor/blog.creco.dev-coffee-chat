@@ -1,5 +1,3 @@
-import { headers } from "next/headers";
-
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
@@ -7,25 +5,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = headers().get("x-pathname") || "";
-
   return (
     <html lang="ok">
       <head>
-        {pathname === "/coffee-chat" || pathname === "/coffee-chat/" ? (
-          <>
-            <link
-              rel="preload"
-              as="image"
-              href="https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png"
-            />
-            <link
-              rel="preload"
-              as="image"
-              href="https://divopsor.github.io/blog-images/profile-20240823.jpg"
-            />
-          </>
-        ) : null}
+        <>
+          <link
+            rel="preload"
+            as="image"
+            href="https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href="https://divopsor.github.io/blog-images/profile-20240823.jpg"
+          />
+        </>
         <style>
           {`
             :root {
@@ -42,18 +36,13 @@ export default function RootLayout({
       </head>
 
       <body
-        style={
-          pathname === "/coffee-chat" || pathname === "/coffee-chat/"
-            ? {
-                backgroundImage:
-                  "url(https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png)",
-                backgroundSize: "100% 110vh",
-                backgroundColor: "rgb(19, 24, 32)",
-              }
-            : {
-              minWidth: "1200px",
-            }
-        }
+        style={{
+          minWidth: "1200px",
+          backgroundImage:
+            "url(https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png)",
+          backgroundSize: "100% 110vh",
+          backgroundColor: "rgb(19, 24, 32)",
+        }}
       >
         {children}
       </body>

@@ -9,7 +9,7 @@ export function SchedulePage() {
   const today = new Date();
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", backgroundColor: '#fff' }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <h1>CreatiCoding's Schedules</h1>
         <div>
