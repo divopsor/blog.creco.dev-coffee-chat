@@ -9,7 +9,7 @@ function useSchedule() {
   useEffect(() => {
     const fetchSchedule = async () => {
       const response = await fetch(
-        "/api/blog-creco-dev/calendar/?calendarId=creaticoding@gmail.com"
+        "/common-api/blog-creco-dev/calendar/?calendarId=creaticoding@gmail.com"
       );
       const data = await response.json();
       setSchedule(data.calendarEvents);
