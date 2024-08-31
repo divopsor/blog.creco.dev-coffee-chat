@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import styles from "./ScheduleCalendar.module.css";
+import Link from 'next/link';
 
 function useSchedule() {
   const [schedule, setSchedule] = useState(null);
@@ -29,12 +30,14 @@ export function ScheduleCalendar() {
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <h1>CreatiCoding's Schedules</h1>
       <div>
+
+        <h4>커피챗 장소</h4>
+        <p>1. 강남역 카페 <Link href="https://kko.to/i2m6H7gAQ3" target={'_blank'}>커피빈 강남역12번출구점</Link></p>
+        <p>2. 역삼역 카페 <Link href="https://kko.to/ryFyBT1HWz" target={'_blank'}>투썸플레이스 역삼성홍타워점</Link></p>
+
         <h2>
-          {today.getFullYear()}년 {today.getMonth() + 1}월
+          {today.getFullYear()}년 {today.getMonth() + 1}월 {schedules == null ? "(로딩 중...)" : "ㅤ"}
         </h2>
-
-        <h4>{schedules == null ? "로딩 중..." : "ㅤ"}</h4>
-
         <CalendarGrid schedules={schedules} />
       </div>
     </div>
