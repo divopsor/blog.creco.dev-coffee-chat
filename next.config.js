@@ -34,7 +34,7 @@ module.exports = (phase, { defaultConfig }) => {
           basePath: false,
         }
       ];
-    }: null,
+    }: undefined,
     rewrites: process.env.LOCAL === 'true' ? async () => {
       return [
         {
@@ -43,7 +43,7 @@ module.exports = (phase, { defaultConfig }) => {
           basePath: false,
         },
       ];
-    }: null,
+    }: undefined,
   };
 
   return nextConfig;

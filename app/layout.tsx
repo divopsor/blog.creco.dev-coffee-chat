@@ -8,18 +8,16 @@ export default function RootLayout({
   return (
     <html lang="ok">
       <head>
-        <>
-          <link
-            rel="preload"
-            as="image"
-            href="https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png"
-          />
-          <link
-            rel="preload"
-            as="image"
-            href="https://divopsor.github.io/blog-images/profile-20240823.jpg"
-          />
-        </>
+        <link
+          rel="preload"
+          as="image"
+          href="https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://divopsor.github.io/blog-images/profile-20240823.jpg"
+        />
         <style>
           {`
             :root {

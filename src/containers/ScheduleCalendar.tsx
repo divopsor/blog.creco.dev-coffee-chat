@@ -1,26 +1,41 @@
-"use client";
+'use client';
 
-import React, { useMemo } from "react";
-import styles from "./index.module.css";
-import { useSchedule } from "./useSchedule";
+import React, { useMemo, useState, useEffect } from "react";
+import styles from "./ScheduleCalendar.module.css";
 
-export function SchedulePage() {
+function useSchedule() {
+  const [schedule, setSchedule] = useState(null);
+
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      const response = await fetch(
+        "/api/blog-creco-dev/calendar/?calendarId=creaticoding@gmail.com"
+      );
+      const data = await response.json();
+      setSchedule(data.calendarEvents);
+    };
+
+    fetchSchedule();
+  }, []);
+
+  return schedule;
+}
+
+export function ScheduleCalendar() {
   const schedules = useSchedule();
   const today = new Date();
 
   return (
-    <div style={{ padding: "20px", backgroundColor: '#fff' }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <h1>CreatiCoding's Schedules</h1>
-        <div>
-          <h2>
-            {today.getFullYear()}년 {today.getMonth() + 1}월
-          </h2>
+    <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <h1>CreatiCoding's Schedules</h1>
+      <div>
+        <h2>
+          {today.getFullYear()}년 {today.getMonth() + 1}월
+        </h2>
 
-          <h4>{schedules == null ? "로딩 중..." : 'ㅤ'}</h4>
+        <h4>{schedules == null ? "로딩 중..." : "ㅤ"}</h4>
 
-          <CalendarGrid schedules={schedules} />
-        </div>
+        <CalendarGrid schedules={schedules} />
       </div>
     </div>
   );
