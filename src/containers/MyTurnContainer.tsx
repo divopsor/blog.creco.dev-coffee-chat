@@ -94,7 +94,7 @@ function LoadingSVG() {
     >
       <g>
         <circle
-          stroke-dasharray="164.93361431346415 56.97787143782138"
+          strokeDasharray="164.93361431346415 56.97787143782138"
           r="35"
           stroke-width="10"
           stroke="#5bd4e1"
@@ -191,16 +191,15 @@ function Information() {
             padding: "0 20px",
           }}
         >
-          현재 {githubId}님 께서는, 총 대기열 {totalCount}명 중 {queueNumber}
-          번째 순서입니다.
+          현재 {githubId}님께서는, 총 대기자 {totalCount}명 중 {queueNumber} 번째 순서입니다.
           <br />
           순차적으로 연락드리고 있어 늦어지더라도 조금만 기다려주시면
           감사하겠습니다. 😅
           <br />
-          궁금하신 사항이 있다면 언제든지 nodejsdeveloper@kakao.com 로
-          연락주세요, 감사합니다!
+          궁금하신 사항이 있다면 언제든지 편하게 연락주세요, 감사합니다!
           <br />
-          연락처: nodejsdeveloper@kakao.com
+          <br />
+          이메일: nodejsdeveloper@kakao.com
         </code>
       </div>
     </>
