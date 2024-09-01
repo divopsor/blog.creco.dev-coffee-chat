@@ -40,7 +40,6 @@ export default function RootLayout({
 
       <body
         style={{
-          minWidth: "1200px",
           backgroundImage:
             "url(https://divopsor.github.io/blog-images/coffee-chat-background-wide-light.png)",
           backgroundSize: "100% 110vh",

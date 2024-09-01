@@ -55,18 +55,19 @@ export function MyTurnContainer() {
         margin: "0 auto",
         height: "100%",
         color: "white",
+        padding: "10px",
       }}
     >
       <Spacing size={20} />
 
-      <h1
+      <span
         style={{
           fontSize: "48px",
-          whiteSpace: "nowrap",
+          wordBreak: "keep-all",
         }}
       >
         ☕ Coffee Chat 순서를 알려드려요!
-      </h1>
+      </span>
 
       <Spacing size={20} />
 
@@ -96,7 +97,7 @@ function LoadingSVG() {
         <circle
           strokeDasharray="164.93361431346415 56.97787143782138"
           r="35"
-          stroke-width="10"
+          strokeWidth="10"
           stroke="#5bd4e1"
           fill="none"
           cy="50"
@@ -122,7 +123,11 @@ function Information() {
   const applicant = useApplicant(githubId);
 
   if (applicant == null) {
-    return <div><LoadingSVG /></div>;
+    return (
+      <div>
+        <LoadingSVG />
+      </div>
+    );
   }
 
   const {
@@ -146,7 +151,7 @@ function Information() {
         </span>
         <span> {githubId}님!</span>
       </h2>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         <table
           style={{
             backgroundColor: "white",
@@ -185,22 +190,26 @@ function Information() {
           </tr>
         </table>
 
-        <code
+        <p
           style={{
             fontSize: "1.2rem",
             padding: "0 20px",
+            wordBreak: "keep-all",
           }}
         >
-          현재 {githubId}님께서는, 총 대기자 {totalCount}명 중 {queueNumber} 번째 순서입니다.
+          현재 {githubId}님께서는, 총 대기자 {totalCount}명 중 {queueNumber}{" "}
+          번째 순서입니다.
+          <br />
           <br />
           순차적으로 연락드리고 있어 늦어지더라도 조금만 기다려주시면
           감사하겠습니다. 😅
+          <br />
           <br />
           궁금하신 사항이 있다면 언제든지 편하게 연락주세요, 감사합니다!
           <br />
           <br />
           이메일: nodejsdeveloper@kakao.com
-        </code>
+        </p>
       </div>
     </>
   );
