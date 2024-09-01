@@ -18,6 +18,11 @@ export default function RootLayout({
           as="image"
           href="https://divopsor.github.io/blog-images/profile-20240823.jpg"
         />
+        <link
+          rel="preload"
+          as="image"
+          href="https://blog.creco.dev/coffee-chat/github-icon.png"
+        />
         <style>
           {`
             :root {

@@ -35,6 +35,8 @@ export function ScheduleCalendar() {
         <p>1. 강남역 카페 <Link href="https://kko.to/i2m6H7gAQ3" target={'_blank'}>커피빈 강남역12번출구점</Link></p>
         <p>2. 역삼역 카페 <Link href="https://kko.to/ryFyBT1HWz" target={'_blank'}>투썸플레이스 역삼성홍타워점</Link></p>
 
+        <p>커피챗은 보통 1시간부터 최대 2시간 정도로 진행하고 있습니다.</p>
+
         <h2>
           {today.getFullYear()}년 {today.getMonth() + 1}월 {schedules == null ? "(로딩 중...)" : "ㅤ"}
         </h2>
