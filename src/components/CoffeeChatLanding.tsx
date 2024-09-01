@@ -1,17 +1,6 @@
 import React from "react";
 import { CoffeeChatButton } from "./CoffeeChatButton";
-
-function Spacing({ size }: { size: number }) {
-  return (
-    <div
-      style={{
-        width: '100%',
-        height: `${size}px`,
-      }}
-    >
-    </div>
-  );
-}
+import { Spacing } from "./Spacing";
 
 export const CoffeeChatLanding: React.FC = () => {
   return (

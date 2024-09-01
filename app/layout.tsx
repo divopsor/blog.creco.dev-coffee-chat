@@ -24,7 +24,7 @@ export default function RootLayout({
               --color-primary: #000000;
               --color-opposite: #ffffff;
             }
-            body {
+            html, body {
               font-family: Noto Sans KR, sans-serif;
               margin: 0;
               padding: 0;
