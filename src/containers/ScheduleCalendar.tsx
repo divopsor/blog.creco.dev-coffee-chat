@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
 import React, { useMemo, useState, useEffect } from "react";
 import styles from "./ScheduleCalendar.module.css";
-import Link from 'next/link';
+import Link from "next/link";
+import { useCalendarDays } from "./useCalendarDays";
 
 function useSchedule() {
-  const [schedule, setSchedule] = useState(null);
+  const [schedule, setSchedule] = useState();
 
   useEffect(() => {
     const fetchSchedule = async () => {
@@ -30,15 +31,25 @@ export function ScheduleCalendar() {
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <h1>CreatiCoding's Schedules</h1>
       <div>
-
         <h4>커피챗 장소</h4>
-        <p>1. 강남역 카페 <Link href="https://kko.to/i2m6H7gAQ3" target={'_blank'}>커피빈 강남역12번출구점</Link></p>
-        <p>2. 역삼역 카페 <Link href="https://kko.to/ryFyBT1HWz" target={'_blank'}>투썸플레이스 역삼성홍타워점</Link></p>
+        <p>
+          1. 강남역 카페{" "}
+          <Link href="https://kko.to/i2m6H7gAQ3" target={"_blank"}>
+            커피빈 강남역12번출구점
+          </Link>
+        </p>
+        <p>
+          2. 역삼역 카페{" "}
+          <Link href="https://kko.to/ryFyBT1HWz" target={"_blank"}>
+            투썸플레이스 역삼성홍타워점
+          </Link>
+        </p>
 
         <p>커피챗은 보통 1시간부터 최대 2시간 정도로 진행하고 있습니다.</p>
 
         <h2>
-          {today.getFullYear()}년 {today.getMonth() + 1}월 {schedules == null ? "(로딩 중...)" : "ㅤ"}
+          {today.getFullYear()}년 {today.getMonth() + 1}월{" "}
+          {schedules == null ? "(로딩 중...)" : "ㅤ"}
         </h2>
         <CalendarGrid schedules={schedules} />
       </div>
@@ -48,55 +59,13 @@ export function ScheduleCalendar() {
 
 const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
 
-const CalendarGrid = ({ schedules }: { schedules: null | any[] }) => {
+const CalendarGrid = ({ schedules }: { schedules?: any[] }) => {
   const today = new Date();
-  const firstDayOfMonth = useMemo(
-    () => new Date(today.getFullYear(), today.getMonth(), 1),
-    [today]
-  );
-  const firstDayOfWeek = firstDayOfMonth.getDay();
-  const daysInCurrentMonth = useMemo(
-    () => new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(),
-    [today]
-  );
-  const daysInPreviousMonth = useMemo(
-    () => new Date(today.getFullYear(), today.getMonth(), 0).getDate(),
-    [today]
-  );
-
-  const LENGTH = today.getDay() === firstDayOfWeek ? 35 : 42;
-
-  const calendarDays = useMemo(() => {
-    return Array.from({ length: LENGTH }, (_, index) => {
-      if (index < firstDayOfWeek) {
-        return daysInPreviousMonth - firstDayOfWeek + index + 1;
-      }
-      if (index >= firstDayOfWeek + daysInCurrentMonth) {
-        return index - (firstDayOfWeek + daysInCurrentMonth) + 1;
-      }
-      return index - firstDayOfWeek + 1;
+  const { calendarDays, firstDayOfWeek, daysInCurrentMonth, getEventsForDate } =
+    useCalendarDays({
+      schedules: schedules ?? undefined,
+      startDate: today,
     });
-  }, [firstDayOfWeek, daysInCurrentMonth, daysInPreviousMonth]);
-
-  const eventsForMonth = useMemo(() => {
-    return schedules?.filter((event) => {
-      const eventDate = new Date(event.startDate);
-      return (
-        eventDate.getMonth() >= today.getMonth() - 1 &&
-        eventDate.getMonth() <= today.getMonth() + 1
-      );
-    });
-  }, [schedules, today]);
-
-  const getEventsForDate = (date: Date) => {
-    return eventsForMonth?.filter((event) => {
-      const eventDate = new Date(event.startDate);
-      return (
-        eventDate.getDate() === date.getDate() &&
-        eventDate.getMonth() === date.getMonth()
-      );
-    });
-  };
 
   return (
     <div className={styles.calendar}>
@@ -114,37 +83,28 @@ const CalendarGrid = ({ schedules }: { schedules: null | any[] }) => {
         {calendarDays.map((day, index) => {
           const isPrevMonth = index < firstDayOfWeek;
           const isNextMonth = index >= firstDayOfWeek + daysInCurrentMonth;
-          const monthOffset = isPrevMonth ? -1 : isNextMonth ? 1 : 0;
-          const currentMonth = today.getMonth() + 1;
-          const previousMonth = currentMonth - 1;
-          const nextMonth = currentMonth + 1;
-
-          const targetDate = new Date(
-            today.getFullYear(),
-            today.getMonth() + monthOffset,
-            day
-          );
 
           return (
             <div
               key={index}
-              className={
+              className={[
                 isPrevMonth || isNextMonth
                   ? styles.current__another__month
-                  : styles.current__month
-              }
+                  : styles.current__month,
+                today.getMonth() === day.getMonth() &&
+                today.getDate() === day.getDate()
+                  ? styles.today
+                  : "",
+              ]
+                .filter((x) => x !== "")
+                .join(" ")}
             >
               <div>
                 <p style={{ color: "var(--color-primary)" }}>
-                  {isPrevMonth
-                    ? previousMonth
-                    : isNextMonth
-                    ? nextMonth
-                    : currentMonth}
-                  /{day}
+                  {day.getMonth() + 1}/{day.getDate()}
                 </p>
                 <div style={{ position: "relative" }}>
-                  <EventList events={getEventsForDate(targetDate)} />
+                  <EventList events={getEventsForDate(day)} />
                 </div>
               </div>
             </div>
