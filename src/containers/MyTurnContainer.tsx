@@ -291,7 +291,7 @@ function Information() {
             </td>
           </tr>
           <tr>
-            <td style={{ width: "80px", textAlign: "center" }}>진행 중</td>
+            <td style={{ width: "80px", textAlign: "center" }}>예약 중</td>
             <td style={{ width: "80px", textAlign: "center" }}>
               {inProgressCount}명
             </td>
