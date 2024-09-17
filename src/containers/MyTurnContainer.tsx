@@ -11,6 +11,21 @@ interface Applicant {
   completedCount: number;
   inProgressCount: number;
   waitingCount: number;
+  status: string;
+}
+
+function InfoButton({
+  onClick,
+  children,
+}: {
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button style={{ fontSize: "2rem" }} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 function useApplicant(githubId?: string | null) {
@@ -121,11 +136,87 @@ function Information() {
   const searchParams = useSearchParams();
   const githubId = searchParams.get("githubId");
   const applicant = useApplicant(githubId);
+  const [inputedGitHubId, setGitHubId] = useState<string>();
 
-  if (applicant == null) {
+  if (applicant === undefined) {
     return (
       <div>
         <LoadingSVG />
+      </div>
+    );
+  }
+
+  if (githubId == null) {
+    return (
+      <>
+        <h2>
+          <span>안녕하세요!</span>
+        </h2>
+
+        <p>GitHub 아이디를 입력해서 확인해보세요!</p>
+
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              wordBreak: "keep-all",
+            }}
+          >
+            <p>
+              <input
+                style={{
+                  borderRadius: "4px",
+                  border: "2px solid black",
+                  padding: "4px",
+                  outline: "none",
+                  fontSize: "2rem",
+                  marginRight: "8px",
+                }}
+                type="text"
+                onChange={(e) => setGitHubId(e.target.value)}
+              />
+              <br />
+              <br />
+              <InfoButton
+                onClick={() => {
+                  if (inputedGitHubId === undefined || inputedGitHubId === "") {
+                    alert("GitHub 아이디를 입력해주세요!");
+                    return;
+                  }
+
+                  window.location.href = `/coffee-chat/my-turn?githubId=${inputedGitHubId}`;
+                }}
+              >
+                보러가기
+              </InfoButton>
+            </p>
+
+            <br />
+            <span>
+              궁금하신 사항이 있다면 언제든지 편하게 연락주세요, 감사합니다!
+            </span>
+            <br />
+            <br />
+            <span>이메일: nodejsdeveloper@kakao.com</span>
+          </p>
+        </div>
+      </>
+    );
+  }
+
+  if (applicant === null) {
+    return (
+      <div>
+        <h1>{`Not Found`}</h1>
+        <h2>{`"${githubId}"로 신청된 커피챗이 없거나, 아직 제출된 신청을 확인 중에 있어요! (조만간 자동화 예정입니다.)`}</h2>
+        <h2>{`만약 신청하신 내역이 조회되지 않고 있다면, 조금 기다려주시거나 nodejsdeveloper@kakao.com 으로 연락주세요!`}</h2>
+        <InfoButton
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          돌아가기
+        </InfoButton>
       </div>
     );
   }
@@ -136,7 +227,30 @@ function Information() {
     queueNumber,
     totalCount,
     waitingCount,
+    status,
   } = applicant;
+
+  if (status === "done") {
+    return (
+      <div>
+        <h2>{`"${githubId}"님! 커피챗이 이미 진행되었습니다.`}</h2>
+        <span>재신청하려면</span>
+        <a href="https://blog.creco.dev/coffee-chat">
+          https://blog.creco.dev/coffee-chat
+        </a>
+        <span>으로 이동해주세요.</span>
+        <br />
+        <br />
+        <InfoButton
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          돌아가기
+        </InfoButton>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -203,6 +317,12 @@ function Information() {
           <br />
           순차적으로 연락드리고 있어 늦어지더라도 조금만 기다려주시면
           감사하겠습니다. 😅
+          <br />
+          <br />
+          다른 사람의 커피챗 일정 조율이 빠르게 진행된 경우,
+          순서와 관계없이 진행되어 진행 중 여부가 올바르지 않을 수 있습니다.
+          <br />
+          최대한 빨리 답장 주시면 좋아요!
           <br />
           <br />
           궁금하신 사항이 있다면 언제든지 편하게 연락주세요, 감사합니다!
