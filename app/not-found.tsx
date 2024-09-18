@@ -1,8 +1,8 @@
 
 'use client';
-
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Error from 'next/error';
 
 interface RoutePageProps {
   params: {
@@ -12,13 +12,12 @@ interface RoutePageProps {
 
 export default function RoutePage({ params }: RoutePageProps) {
   const router = useRouter();
-  const { route } = params;
 
   useEffect(() => {
-    if (route.startsWith('schedule')) {
+    if (window.location.pathname.startsWith('/coffee-chat/schedule')) {
       router.replace('/schedule');
     }
-  }, [route, router]);
+  }, [router]);
 
-  return null;
+  return <Error statusCode={404} />
 }
