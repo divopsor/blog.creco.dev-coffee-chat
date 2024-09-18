@@ -1,5 +1,4 @@
 import React from "react";
-import { CoffeeChatButton } from "./CoffeeChatButton";
 import { Spacing } from "./Spacing";
 
 export const CoffeeChatLanding: React.FC = () => {
@@ -98,8 +97,8 @@ export const CoffeeChatLanding: React.FC = () => {
       </div>
 
       <Spacing size={40} />
-      
-      <CoffeeChatButton />
+
+      <h1 style={{ color: 'white' }}>커피챗 신청이 종료되었습니다.</h1>
 
       <Spacing size={20} />
 
