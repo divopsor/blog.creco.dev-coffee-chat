@@ -171,7 +171,7 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
                 : event.name.startsWith("커피챗")
                 ? "rgba(255, 255, 0, 0.3)"
                 : event.name.startsWith("H")
-                ? "rgba(255, 100, 255, 0.3)"
+                ? "rgba(112, 208, 255, 0.7)"
                 : event.name.startsWith("Extra")
                 ? "rgba(150, 255, 150, 0.3)"
                 : "rgba(0, 0, 0, 0.1)",
