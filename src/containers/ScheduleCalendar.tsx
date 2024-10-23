@@ -195,16 +195,35 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
                   textAlign: "center",
                 }}
               >
-                {event.name}
-                <br />
-                {event.startTime} - {event.endTime}
+                {
+                  event.name === 'H' ? (
+                    <>{event.startTime} - {event.endTime}</>
+                  ) : (
+                    <>
+                      {event.name}
+                      <br />
+                      {event.startTime} - {event.endTime}
+                    </>
+                  )
+                }
+                
               </div>
             ) : (
               <p style={{ fontSize: "14px" }}>
-                {`${event.name} `}
-                <span style={{ fontSize: "12px" }}>
-                  {event.startTime} - {event.endTime}
-                </span>
+                {
+                  event.name === 'H' ? (
+                    <span style={{ fontSize: "12px" }}>
+                      {event.startTime} - {event.endTime}
+                    </span>
+                  ) : (
+                    <>
+                      {`${event.name}`}
+                      <span style={{ fontSize: "12px" }}>
+                        {event.startTime} - {event.endTime}
+                      </span>
+                    </>
+                  )
+                }
               </p>
             )}
           </div>
