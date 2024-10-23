@@ -31,7 +31,7 @@ export function ScheduleCalendar() {
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <h1>CreatiCoding's Schedules</h1>
       <div>
-        <h4>커피챗 장소</h4>
+        {/* <h4>커피챗 장소</h4>
         <p>
           1. 강남역 카페{" "}
           <Link href="https://kko.to/i2m6H7gAQ3" target={"_blank"}>
@@ -45,7 +45,7 @@ export function ScheduleCalendar() {
           </Link>
         </p>
 
-        <p>커피챗은 보통 1시간부터 최대 2시간 정도로 진행하고 있습니다.</p>
+        <p>커피챗은 보통 1시간부터 최대 2시간 정도로 진행하고 있습니다.</p> */}
 
         <h2>
           {today.getFullYear()}년 {today.getMonth() + 1}월{" "}
@@ -134,8 +134,10 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
   const calculatePosition = (event: Event) => {
     const [hour, min] = event.startTime.split(":").map(Number);
     const totalMinutes = hour * 60 + min;
-    const top = Math.max(0, ((totalMinutes - 540) * 400) / 900);
-    const height = Math.min(400 - top, (event.minutes * 400) / 900 - 10);
+    const topPaddingTime = 500;
+    const unitSize = 320 / 900; // 0.36px
+    const top = Math.max(0, ((totalMinutes - topPaddingTime) * unitSize));
+    const height = Math.min(400 - top, (event.minutes * unitSize) - 10);
 
     return {
       top,
@@ -168,6 +170,10 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
                 ? "rgba(0, 255, 0, 0.3)"
                 : event.name.startsWith("커피챗")
                 ? "rgba(255, 255, 0, 0.3)"
+                : event.name.startsWith("H")
+                ? "rgba(255, 100, 255, 0.3)"
+                : event.name.startsWith("Extra")
+                ? "rgba(150, 255, 150, 0.3)"
                 : "rgba(0, 0, 0, 0.1)",
               fontWeight: event.name.toLowerCase().startsWith("free")
                 ? "bold"
